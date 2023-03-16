@@ -36,11 +36,6 @@ const Navbar = () => {
                       <span className="text-gray-900 dark:text-white hover:underline" aria-current="page">RandomDog</span>
                     </Link>
                   </li>
-                  <li>
-                    <Link to="/classes/Redux">
-                      <span className="text-gray-900 dark:text-white hover:underline" aria-current="page">Redux</span>
-                    </Link>
-                  </li>
                 </ul>
               </div>
               <div className="flex items-center">
