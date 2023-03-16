@@ -1,6 +1,7 @@
 import { Outlet } from 'react-router-dom';
-import { Navbar } from '../../components/Navbar/index.jsx' 
-export function Home() {
+import Navbar from '../../components/Navbar'
+
+const Home = () => {
   return (
     <>
       <Navbar />
@@ -8,3 +9,5 @@ export function Home() {
     </>
   );
 }
+
+export default Home

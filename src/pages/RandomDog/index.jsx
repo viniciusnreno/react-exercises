@@ -1,33 +1,29 @@
 import axios from "axios";
-import { useEffect } from "react";
-import { useLoaderData, useNavigation, useRevalidator }   from "react-router-dom";
+import { useQuery } from "@tanstack/react-query";
 import Header from "../../components/Header";
 
 const RandomDog = () => {
-  const dogUrl = useLoaderData();
-  const navigation = useNavigation();
-  const revalidator = useRevalidator();
+  const { data, isFetching, refetch } = useQuery(["dog"], () => {
+    return axios.get('https://random.dog/woof.json').then((res) => res.data)
+  });
 
-  useEffect(() => {
-    console.log(navigation.state)
-  }, [dogUrl])
-  
+  console.log(data?.url)
+  const showImage = () => {  
+    if (isFetching)
+      return <img className="mx-auto w-20" src="/images/loading.gif"/>  
+    else 
+      return (data?.url.includes('.mp4')) ? <video controls><source src={data?.url} type="video/mp4"></source></video> : <img src={data?.url} alt="" />  
+  }
   return (
     <div className="content">
       <Header title="RandomDog"/>
       <div className="mt-4 w-96 mx-auto">
         { 
-          (dogUrl.includes('.mp4')) ? <video controls><source src={dogUrl} type="video/mp4"></source></video> : <img src={dogUrl} alt="" />  
+          showImage()
         }
       </div>
-      <button onClick={() => revalidator.revalidate()} className="mt-4 btn-primary">New</button>
+      <button onClick={refetch} className="mt-4 btn-primary">New</button>
     </div>
   );
 }
 export default RandomDog;
-
-export const getData = async () => {
-  const data =  await fetch(' ')
-  const dog = await data.json();
-  return dog.url;
-}
