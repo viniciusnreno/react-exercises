@@ -1,55 +1,14 @@
-// pages
-import Home from '../pages/Home'
-import UseStateClass from '../pages/UseStateClass'
-import PredictAge from '../pages/PredictAge'
-import RandomDog from '../pages/RandomDog'
-import Form from '../pages/Form'
-import Redux from '../pages/Redux'
-
 // tools
-import { RouterProvider, createBrowserRouter } from 'react-router-dom'
-import { QueryClientProvider , QueryClient } from '@tanstack/react-query'
-import Provider  from 'react-redux';
-
-const router = createBrowserRouter([
-  {
-    path: "/",
-    element: <Home />,
-    children: [
-      {
-        path: "/classes/useState",
-        element: <UseStateClass />
-      },
-      {
-        path: "/classes/PredictAge",
-        element: <PredictAge />
-      },
-      {
-        path: "/classes/RandomDog",
-        element: <RandomDog />
-      },
-      {
-        path: "/classes/Form",
-        element: <Form/>
-      },
-      {
-        path: "/classes/Redux",
-        element: <Redux/>
-      },
-    ]
-  }
-])
-const client = new QueryClient({
-  defaultOptions: {
-    queries: {
-      refechOnWindowFocus: false
-    }
-  }
-});
+import { RouterProvider } from 'react-router-dom'
+import { QueryClientProvider } from '@tanstack/react-query'
+import { Provider } from 'react-redux';
+import { store } from '../Tools/store'
+import { router } from '../Tools/router'
+import { client } from '../Tools/clientConfig';
 
 const App = () => {
   return(
-    <Provider>
+    <Provider store={store}>
       <QueryClientProvider client={client}>
         <RouterProvider router={router} />
       </QueryClientProvider>
