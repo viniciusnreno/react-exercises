@@ -1,31 +1,7 @@
-import { useState, useEffect, useRef } from 'react';
+import { useCounter } from "../../Hooks/useCounter";
 
-export function UseStateClass(){
-  const [ result, setResult ] = useState(0);
-  const prevResult = useRef();
-
-  // useEffect(() => {
-  //   if (prevResult.current !== undefined) {
-  //     const message =
-  //       result > prevResult.current
-  //         ? "O número foi aumentado!"
-  //         : "O número foi diminuído!";
-  //     alert(message);
-  //   }
-  //   prevResult.current = result;
-  // }, [result]);
-
-
-  console.log(result)
-    function increase(){
-      setResult(result + 1);
-    } 
-  function decrease(){
-    setResult(result - 1);
-  } 
-  function setZero(){
-    setResult(0);
-  } 
+const UseStateClass = () => {
+  const { result, increase, decrease, setZero } = useCounter();
   return(
     <div className="content">
       <h1 className="mb-4 text-4xl font-extrabold leading-none tracking-tight text-gray-900 md:text-5xl lg:text-6xl ">UseStateClass</h1>
@@ -38,3 +14,5 @@ export function UseStateClass(){
     </div>
   );
 }
+
+export default UseStateClass;
