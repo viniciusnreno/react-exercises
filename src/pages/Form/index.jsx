@@ -1,27 +1,30 @@
 import Header from "../../components/Header";
 import { useForm } from "react-hook-form";
+import * as yup from 'yup'
 import { yupResolver }  from '@hookform/resolvers/yup'
-import { schema } from '../../Tools/formSchema'
-import { useDispatch, useSelector } from 'react-redux'
-import { login, logout } from '../../Tools/store'
 
 const Form = () => {
-  const dispatch = useDispatch();
-  const  username = useSelector(state => state.user.value.username)
+  const schema = yup.object().shape({
+    gitName: yup.string().required("Enter with your name"),
+    email: yup.string().email().required("Enter with your email!"),
+    password: yup.string().min(4).max(10).required("Enter with your password"),
+    confirm_password: yup
+      .string()
+      .oneOf([yup.ref("password"), null], "Password dont match")
+      .required("Confirm your password")
+  });
 
   const { register, handleSubmit, formState: {errors}  } = useForm({
     resolver: yupResolver(schema),
   });
-
   const onSubmit = (data) => {
-    dispatch(login({ username: data.gitName }))
+    console.log(data);
   }
 
   return(
     <div className="content">
       <Header title="Form"/>
       <form onSubmit={handleSubmit(onSubmit)} className="w-1/3 mx-auto" >
-        <h1>{username}</h1>
         <div className="mb-6">
           <label htmlFor="gitName" className="block mb-2 text-sm font-medium text-gray-900 text-left">Github Name</label>
           <input type="text" {...register("gitName")} className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:focus:ring-blue-500 dark:focus:border-blue-500 dark:text-white" placeholder="John"/>
