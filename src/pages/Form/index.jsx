@@ -20,11 +20,9 @@ const Form = () => {
 
   return(
     <>
-      <Navbar />
       <div className="content">
         <Header title="First step"/>
         <form onSubmit={handleSubmit(onSubmit)} className="md:w-1/3 mx-auto" >
-          <h1>{username}</h1>
           <div className="mb-6">
             <label htmlFor="gitName" className="block mb-2 text-sm font-medium text-gray-900 text-left">Github Name</label>
             <input type="text" {...register("gitName")} className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:focus:ring-blue-500 dark:focus:border-blue-500 dark:text-white" placeholder="John"/>

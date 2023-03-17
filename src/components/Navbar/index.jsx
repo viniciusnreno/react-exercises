@@ -69,12 +69,7 @@ const Navbar = () => {
               <ul className="items-center justify-center space-y-8 md:flex md:space-x-6 md:space-y-0">
               <li>
                   <Link to="/classes/Form">
-                    <span onClick={dispatch(logout())} className="text-sm font-medium text-blue-600 dark:text-blue-500 hover:underline">{username.length > 0 ? "Logout" : "Login"}</span>
-                  </Link>
-                </li>
-                <li>
-                  <Link to="/">
-                    <span className="text-gray-900 dark:text-white hover:underline" aria-current="page">Home</span>
+                    <span onClick={username.length > 0 ? dispatch(logout()) : ""} className="text-sm font-medium text-blue-600 dark:text-blue-500 hover:underline">{username.length > 0 ? "Logout" : "Login"}</span>
                   </Link>
                 </li>
                 <li>
@@ -146,7 +141,6 @@ const Navbar = () => {
           </div>
         </div>
       </nav>
-      <Outlet />
     </>
   );
 }
