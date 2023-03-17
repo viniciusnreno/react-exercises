@@ -1,4 +1,4 @@
-import { Link } from "react-router-dom";
+import { Link,Outlet } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import { logout } from '../../Tools/store'
 import { useState } from "react";
@@ -146,6 +146,7 @@ const Navbar = () => {
           </div>
         </div>
       </nav>
+      <Outlet />
     </>
   );
 }
