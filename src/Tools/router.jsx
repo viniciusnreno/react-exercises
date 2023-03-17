@@ -4,7 +4,6 @@ import UseStateClass from '../pages/UseStateClass'
 import PredictAge from '../pages/PredictAge'
 import RandomDog from '../pages/RandomDog'
 import Form from '../pages/Form'
-import Redux from '../pages/Redux'
 
 import { createBrowserRouter } from "react-router-dom"
 
@@ -28,11 +27,7 @@ export const router = createBrowserRouter([
       {
         path: "/classes/Form",
         element: <Form/>
-      },
-      {
-        path: "/classes/Redux",
-        element: <Redux/>
-      },
+      }
     ]
   }
 ])
