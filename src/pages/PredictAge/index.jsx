@@ -4,11 +4,11 @@ import Header from "../../components/Header";
 
 const PredictAge = () => {
   const [name, setName] = useState('');
-  const [data, setData] = useState({});
+  const [data, setData] = useState(0);
 
   const getData = async () => {
     await axios.get(`https://api.agify.io/?name=${name}`).then((res) => {
-      setData(res.data);
+      setData(res.data.age);
     })
   }
 
@@ -24,7 +24,7 @@ const PredictAge = () => {
             Predict
           </button>
         </div>
-        <h1 className="font-bold leading-none tracking-tight text-gray-900 lg:text-2xl">Predicted age: <mark className="px-2 text-white bg-blue-600 rounded dark:bg-blue-500">{data.age}</mark></h1>
+        <span className="font-bold leading-none tracking-tight dark:text-white text-gray-900 lg:text-2xl">Predicted age: <mark className="px-2 text-white bg-blue-600 rounded dark:bg-blue-500">{data}</mark></span>
       </div>
     </>
   );

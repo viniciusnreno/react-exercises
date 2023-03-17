@@ -5,6 +5,7 @@ import { Provider } from 'react-redux';
 import { store } from '../Tools/store'
 import { router } from '../Tools/router'
 import { client } from '../Tools/clientConfig';
+import Navbar from '../components/Navbar';
 
 const App = () => {
   return(

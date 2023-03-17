@@ -1,9 +1,9 @@
 // pages
-import Home from '../pages/Home'
 import UseStateClass from '../pages/UseStateClass'
 import PredictAge from '../pages/PredictAge'
 import RandomDog from '../pages/RandomDog'
 import Form from '../pages/Form'
+import Home from '../pages/Home'
 
 import { createBrowserRouter } from "react-router-dom"
 

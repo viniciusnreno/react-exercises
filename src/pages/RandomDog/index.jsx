@@ -19,7 +19,7 @@ const RandomDog = () => {
   return (
     <div className="content">
       <Header title="RandomDog"/>
-      <div className="mt-4 w-96 mx-auto">
+      <div className="mt-4 w-96 mx-auto max-w-full">
         { 
           showImage()
         }

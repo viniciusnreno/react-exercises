@@ -1,8 +1,7 @@
-import { Outlet } from 'react-router-dom';
-import Navbar from '../../components/Navbar'
-
-const Home = () => {
-  return (
+import Navbar from "../../components/Navbar";
+import { Outlet } from "react-router-dom";
+const Home = () => { 
+  return(
     <>
       <Navbar />
       <Outlet />
@@ -10,4 +9,4 @@ const Home = () => {
   );
 }
 
-export default Home
+export default Home;
